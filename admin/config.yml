@@ -1,0 +1,84 @@
+backend:
+  name: github
+  repo: akramtaktak-sahalha/akramtaktak-sahalha.github.io
+  branch: main
+  commit_messages:
+    update: "Admin : mise à jour {{slug}}"
+media_folder: img/uploads
+public_folder: /img/uploads
+locale: fr
+site_url: https://akramtaktak-sahalha.github.io
+display_url: https://akramtaktak-sahalha.github.io
+collections:
+  - name: site
+    label: Site Sahalha
+    files:
+      - name: contenu
+        label: Contenu du site
+        file: content/site.json
+        format: json
+        fields:
+          - label: Réglages
+            name: settings
+            widget: object
+            collapsed: true
+            fields:
+              - {label: "WhatsApp (avec 216)", name: whatsapp, widget: string}
+              - {label: "Lien boutique Converty", name: shop, widget: string}
+              - {label: "Chaîne YouTube", name: youtube, widget: string}
+              - {label: "ID playlist YouTube (vidéos affichées)", name: youtube_playlist, widget: string}
+              - {label: "TikTok", name: tiktok, widget: string}
+              - {label: "Facebook", name: facebook, widget: string}
+              - {label: "Meta Pixel ID", name: meta_pixel, widget: string, required: false}
+              - {label: "TikTok Pixel ID", name: tiktok_pixel, widget: string, required: false}
+          - label: Fiches PDF gratuites (glisser pour changer l'ordre)
+            name: fiches
+            widget: list
+            summary: "{{fields.title}}"
+            collapsed: true
+            fields:
+              - {label: Titre, name: title, widget: string}
+              - {label: Fichier PDF, name: pdf, widget: file, media_folder: /pdf, public_folder: /pdf}
+              - {label: "Miniature (laisser vide = créée automatiquement)", name: thumb, widget: image, required: false, media_folder: /img/fiches, public_folder: /img/fiches}
+              - {label: "Nombre de pages (vide = automatique)", name: pages, widget: number, required: false}
+              - label: Classes où la fiche apparaît
+                name: classes
+                widget: select
+                multiple: true
+                options:
+                  - {label: "2ème Sciences", value: 2sc}
+                  - {label: "2ème Informatique", value: 2info}
+                  - {label: "3ème Sciences", value: 3sc}
+                  - {label: "Bac", value: bac}
+              - {label: "Afficher aussi sur l'accueil", name: home, widget: boolean, default: false}
+          - label: Classes (pages)
+            name: classes
+            widget: list
+            summary: "{{fields.short}}"
+            collapsed: true
+            allow_add: false
+            allow_remove: false
+            fields:
+              - {label: "Nom court (menu)", name: short, widget: string}
+              - {label: "Badge", name: tag, widget: string}
+              - {label: "Grand chiffre", name: num, widget: string}
+              - {label: "Titre principal (H1, HTML autorisé : <em>…</em>)", name: h1, widget: string}
+              - {label: "Texte d'introduction", name: lead, widget: text}
+              - {label: "Titre Google (SEO)", name: title, widget: string}
+              - {label: "Description Google (SEO)", name: desc, widget: text}
+              - {label: "Mots-clés (SEO)", name: kw, widget: string}
+              - {label: "Couverture du livre", name: cover, widget: image, media_folder: /img, public_folder: /img}
+              - {label: "Nom du livre", name: book, widget: string}
+              - {label: "Points forts du livre", name: bookpts, widget: list, field: {label: Point, name: p, widget: string}}
+              - {label: "Lien Converty du livre", name: shop, widget: string}
+              - {label: "Chapitres", name: chaps, widget: list, field: {label: Chapitre, name: c, widget: string}}
+              - {label: "Lien de la page (ne pas modifier)", name: slug, widget: hidden}
+              - {label: "Code classe (ne pas modifier)", name: notif, widget: hidden}
+          - label: FAQ de l'accueil
+            name: home_faq
+            widget: list
+            summary: "{{fields.q}}"
+            collapsed: true
+            fields:
+              - {label: Question, name: q, widget: string}
+              - {label: Réponse, name: a, widget: text}
