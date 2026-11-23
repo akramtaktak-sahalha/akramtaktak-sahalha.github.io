@@ -150,12 +150,13 @@ def exo_section(items, title, bg=""):
 def apercu_block(c):
     ok, flou = c.get("apercu") or [], c.get("apercu_flou") or []
     if not ok: return ""
-    pages = "".join(f'<button class="pg" data-src="{esc(u)}" aria-label="Agrandir la page {i+1}"><img src="{esc(u)}" alt="Aperçu du livre {esc(c["short"])} – page {i+1}" loading="lazy" width="300" height="424"></button>' for i, u in enumerate(ok))
-    pages += "".join(f'<a class="pg lock" href="{esc(c["shop"])}" target="_blank" rel="noopener"><img src="{esc(_blur(u))}" alt="" loading="lazy" width="300" height="424"><span>🔒<b>Contenu réservé</b>Débloque tout le livre</span></a>' for u in flou)
-    return (f'<section id="apercu" style="padding-top:0"><div class="wrap"><div class="reveal"><span class="eyebrow">Aperçu gratuit</span><h2>Feuillette le livre</h2>'
-            f'<p class="sub">Découvre le menu, le rappel du cours, une série et sa correction. Glisse →, clique sur une page pour l’agrandir.</p></div>'
-            f'<div class="flip reveal">{pages}</div>'
-            f'<p style="margin-top:18px"><a class="btn btn-main" href="{esc(c["shop"])}" target="_blank" rel="noopener">🔓 Débloquer tout le livre – Boutique</a></p></div></section>'
+    data = json.dumps({"ok": ok, "lock": [_blur(u) for u in flou], "total": c.get("pages_livre") or 0,
+                       "shop": c["shop"], "name": c["short"]}, ensure_ascii=False)
+    return (f'<section id="apercu" class="apercu-sec"><div class="wrap"><div class="center reveal"><span class="eyebrow">Aperçu gratuit</span><h2>Feuillette le livre</h2>'
+            f'<p class="sub">Tourne les pages comme un vrai livre : le menu, le cours, une série et sa correction.</p></div>'
+            f'<div class="fb reveal" data-book="{esc(data)}"><div class="fb-stage"><div class="fb-book"></div></div>'
+            f'<div class="fb-bar"><button class="fb-prev" aria-label="Page précédente">‹</button><div class="fb-info"><span class="fb-count"></span><div class="fb-prog"><i class="fb-free"></i><i class="fb-pos"></i></div></div><button class="fb-zoom" aria-label="Agrandir">🔍</button><button class="fb-next" aria-label="Page suivante">›</button></div>'
+            f'<p class="fb-hint">👆 Clique ou glisse pour tourner la page</p></div></div></section>'
             '<div class="lb" hidden><button aria-label="Fermer">✕</button><img alt="Page du livre"></div>')
 
 def _blur(u):
