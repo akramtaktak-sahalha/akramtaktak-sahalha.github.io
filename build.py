@@ -241,8 +241,8 @@ def home():
 </div></section>
 
 <section><div class="wrap"><div class="live reveal">
-<span class="dot"><i></i> Lives</span><h2>Ne rate aucun live</h2><p class="sub">Les lives se font sur la chaîne YouTube Sahalha, et le replay reste disponible. Une question sur un exercice, un live ou un livre ? Écris-moi directement sur WhatsApp. <span class="ar">عندك سؤال؟ ابعثلي على الواتساب 👇</span></p>
-<div class="btns"><a class="btn btn-wa" href="{WA_DIRECT}" target="_blank" rel="noopener">{WA_SVG.replace('<svg','<svg width=22 height=22 style="fill:#fff"')} Écris-moi sur WhatsApp</a><a class="btn btn-ghost" href="{YT}" target="_blank" rel="noopener">Chaîne YouTube</a></div>
+<span class="dot"><i></i> Lives</span><h2>Ne rate aucun live</h2><p class="sub">Les lives se font sur la chaîne YouTube Sahalha, et le replay reste disponible. Pour être prévenu(e) avant chaque live, rejoins la communauté WhatsApp Sahalha. <span class="ar">باش يوصلك تنبيه قبل كل لايف، ادخل للكوميونيتي متاعنا على الواتساب 👇</span></p>
+<div class="btns"><a class="btn btn-ghost" href="{YT}" target="_blank" rel="noopener">Chaîne YouTube</a></div>
 {NOTIF('')}
 </div></div></section>
 
@@ -302,8 +302,7 @@ def class_page(c):
 {exo_section([f for f in EXOS if c['notif'] in (f.get('classes') or [])], "Exercices gratuits – " + c['short'])}
 
 <section><div class="wrap"><div class="live reveal">
-<span class="dot"><i></i> Lives {c['short']}</span><h2>Lives et replays</h2><p class="sub">Les lives se font sur YouTube, avec questions/réponses. Chaque live reste enregistré : si tu le rates, tu le revois quand tu veux. Une question ? Écris-moi sur WhatsApp. <span class="ar">عندك سؤال؟ ابعثلي على الواتساب 👇</span></p>
-<div class="btns"><a class="btn btn-wa" href="{WA_DIRECT}" target="_blank" rel="noopener">{WA_SVG.replace('<svg','<svg width=22 height=22 style="fill:#fff"')} Écris-moi sur WhatsApp</a></div>
+<span class="dot"><i></i> Lives {c['short']}</span><h2>Lives et replays</h2><p class="sub">Les lives se font sur YouTube, avec questions/réponses. Chaque live reste enregistré : si tu le rates, tu le revois quand tu veux. Pour être prévenu(e) avant chaque live, rejoins la communauté WhatsApp Sahalha. <span class="ar">باش يوصلك تنبيه قبل كل لايف، ادخل للكوميونيتي متاعنا على الواتساب 👇</span></p>
 {NOTIF(c['notif'])}
 </div></div></section>
 
