@@ -115,9 +115,9 @@ def nav(active):
 def footer():
     cls = "".join(f'<a href="/{c["slug"]}/">Algorithme & Python {c["short"]}</a>' for c in CLASSES)
     return f"""<footer><div class="wrap"><div class="cols">
-<div><h4>Sahalha <span class="ar">تسهال مع أكرم</span></h4><p>Algorithmique et programmation Python expliquées en tunisien, de la 2ème année secondaire jusqu'au Bac. Cours, fiches PDF gratuites, exercices et sujets Bac corrigés.</p></div>
-<div><h4>Les classes</h4>{cls}</div>
-<div><h4>Suivre Sahalha</h4><a href="{YT}" target="_blank" rel="noopener">YouTube</a><a href="{TIKTOK}" target="_blank" rel="noopener">TikTok</a><a href="{FB}" target="_blank" rel="noopener">Facebook</a><a href="{WA_DIRECT}" target="_blank" rel="noopener">WhatsApp : 23 235 642</a><a href="{SHOP}" target="_blank" rel="noopener">Boutique (livres)</a></div>
+<div><h3>Sahalha <span class="ar">تسهال مع أكرم</span></h3><p>Algorithmique et programmation Python expliquées en tunisien, de la 2ème année secondaire jusqu'au Bac. Cours, fiches PDF gratuites, exercices et sujets Bac corrigés.</p></div>
+<div><h3>Les classes</h3>{cls}</div>
+<div><h3>Suivre Sahalha</h3><a href="{YT}" target="_blank" rel="noopener">YouTube</a><a href="{TIKTOK}" target="_blank" rel="noopener">TikTok</a><a href="{FB}" target="_blank" rel="noopener">Facebook</a><a href="{WA_DIRECT}" target="_blank" rel="noopener">WhatsApp : 23 235 642</a><a href="{SHOP}" target="_blank" rel="noopener">Boutique (livres)</a></div>
 </div><div class="copy">© {datetime.date.today().year} Sahalha · Akram Taktak · Algorithme, Python, informatique – Tunisie</div></div></footer>
 <div class="sheet" id="sheet" hidden><div class="sheet-in"><button class="x" aria-label="Fermer">×</button><div class="logo big">{HAT}</div><b>Installe l'app Sahalha</b><p id="sheet-txt"></p><button class="btn btn-main" id="sheet-go">📲 Installer</button></div></div>
 <a class="fab" href="{WA_DIRECT}" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp">{WA_SVG}</a>
@@ -199,7 +199,7 @@ def home():
          "areaServed": "TN", "founder": {"@type": "Person", "name": "Akram Taktak"}, "sameAs": [YT, TIKTOK, FB]},
         {"@type": "WebSite", "name": "Sahalha", "url": BASE + "/", "inLanguage": "fr-TN"},
         faq_ld(HOME_FAQ)]}
-    title = "Sahalha – Algorithme & Programmation Python | Bac Tunisie, 2ème et 3ème"
+    title = "Sahalha – Algorithme & Python, de la 2ème au Bac (Tunisie)"
     desc = "Algorithmique et programmation Python expliquées en tunisien, de la 2ème année secondaire au Bac Tunisie : vidéos, lives, fiches PDF gratuites, exercices et sujets Bac corrigés. تسهال مع أكرم"
     kw = "algorithme, python, programmation, informatique tunisie, bac tunisie, bac informatique, algorithmique bac, cours python tunisie, exercices corrigés algorithme, sujets bac corrigés, 2ème sciences, 3ème sciences, tunisie"
     body = f"""{nav("")}
