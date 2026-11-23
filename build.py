@@ -147,6 +147,32 @@ def exo_section(items, title, bg=""):
     return (f'<section id="exercices"{bg}><div class="wrap"><div class="reveal"><span class="eyebrow">Gratuit</span><h2>{title}</h2>'
             f'<p class="sub">Entraîne-toi, puis vérifie avec la correction.</p></div><div class="fiches">{exo_cards(items)}</div></div></section>')
 
+def apercu_block(c):
+    ok, flou = c.get("apercu") or [], c.get("apercu_flou") or []
+    if not ok: return ""
+    pages = "".join(f'<button class="pg" data-src="{esc(u)}" aria-label="Agrandir la page {i+1}"><img src="{esc(u)}" alt="Aperçu du livre {esc(c["short"])} – page {i+1}" loading="lazy" width="300" height="424"></button>' for i, u in enumerate(ok))
+    pages += "".join(f'<a class="pg lock" href="{esc(c["shop"])}" target="_blank" rel="noopener"><img src="{esc(_blur(u))}" alt="" loading="lazy" width="300" height="424"><span>🔒<b>Contenu réservé</b>Débloque tout le livre</span></a>' for u in flou)
+    return (f'<section id="apercu" style="padding-top:0"><div class="wrap"><div class="reveal"><span class="eyebrow">Aperçu gratuit</span><h2>Feuillette le livre</h2>'
+            f'<p class="sub">Découvre le menu, le rappel du cours, une série et sa correction. Glisse →, clique sur une page pour l’agrandir.</p></div>'
+            f'<div class="flip reveal">{pages}</div>'
+            f'<p style="margin-top:18px"><a class="btn btn-main" href="{esc(c["shop"])}" target="_blank" rel="noopener">🔓 Débloquer tout le livre – Boutique</a></p></div></section>'
+            '<div class="lb" hidden><button aria-label="Fermer">✕</button><img alt="Page du livre"></div>')
+
+def _blur(u):
+    """Les pages verrouillées sont floutées ici : seule la version floue est publiée sur la page."""
+    if os.path.basename(u).startswith("flou-"): return u
+    src = os.path.join(OUT, u.lstrip("/")); dst_name = "flou-" + os.path.splitext(os.path.basename(u))[0] + ".webp"
+    dst = os.path.join(OUT, "img", "apercu", dst_name)
+    if not os.path.exists(dst):
+        try:
+            from PIL import Image, ImageFilter
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            im = Image.open(src).convert("RGB"); w = 60
+            im.resize((w, int(w * im.height / im.width))).resize((420, int(420 * im.height / im.width))).filter(ImageFilter.GaussianBlur(6)).save(dst, "WEBP", quality=50)
+        except Exception as e:
+            print("flou impossible :", u, e); return u
+    return "/img/apercu/" + dst_name
+
 def video_block():
     return (f'<div class="video-wrap reveal"><div class="video"><button data-list="{YT_LIST}" aria-label="Lancer les vidéos Sahalha"><div><div class="play"></div>Voir les vidéos Sahalha</div></button></div>'
             f'<a class="yt-out" href="{YT}/videos" target="_blank" rel="noopener">▶ Regarder sur YouTube</a>'
@@ -283,6 +309,7 @@ def class_page(c):
 <div class="btns"><a class="btn btn-main" href="{c['shop']}" target="_blank" rel="noopener">🛒 Commander le livre</a><a class="btn btn-light" href="{WA_DIRECT}" target="_blank" rel="noopener">Une question ?</a></div></div>
 </div></div></section>
 
+{apercu_block(c)}
 <section style="padding-top:0"><div class="wrap"><div class="reveal"><span class="eyebrow">Programme</span><h2>Les chapitres</h2></div><div class="chaps reveal">{chips}</div></div></section>
 
 <section class="faq" style="padding-top:0"><div class="wrap" style="max-width:820px"><div class="reveal"><h2>Questions fréquentes</h2></div>{faq_block(faq)}</div></section>
