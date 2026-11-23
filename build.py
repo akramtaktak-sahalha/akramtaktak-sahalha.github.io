@@ -286,7 +286,7 @@ def class_page(c):
 <div class="wrap">
 <div class="reveal in"><div class="crumbs"><a href="/">Accueil</a> › {c['short']}</div>
 <h1>{c['h1']}</h1><p class="lead">{esc(c['lead'])}</p><span class="ar">مرحبا بيك، هنا تلقى كل شي باش تفهم وتنجح 💯</span>
-<div class="btns"><a class="btn btn-main" href="#fiches">📄 Fiches PDF gratuites</a><a class="btn btn-ghost" href="#livre">📚 Le livre</a></div></div>
+<div class="btns"><a class="btn btn-main" href="#livre">📚 Le livre</a><a class="btn btn-ghost btn-sm" href="#fiches">📄 Fiches PDF gratuites</a></div></div>
 <div class="reveal in d2"><a href="#apercu" class="open-book" aria-label="Feuilleter le livre"><img class="cover" src="{c['cover']}" alt="{esc(c['book'])} – Sahalha, Tunisie" width="900" height="1200"></a></div>
 </div></section>
 
