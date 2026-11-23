@@ -310,7 +310,7 @@ def class_page(c):
 <section id="livre"><div class="wrap"><div class="book reveal">
 <img src="{c['cover']}" alt="Couverture – {esc(c['book'])}" width="900" height="1200" loading="lazy">
 <div><span class="eyebrow">Le livre</span><h2>{esc(c['book'])}</h2><ul class="checks">{pts}</ul>
-<div class="btns"><a class="btn btn-main" href="{c['shop']}" target="_blank" rel="noopener">🛒 Commander le livre</a>{'<a class="btn btn-book open-book" href="#apercu">📖 Feuilleter le livre</a>' if c.get('apercu') else ''}<a class="btn btn-light" href="{WA_DIRECT}" target="_blank" rel="noopener">Une question ?</a></div></div>
+<div class="btns"><a class="btn btn-main" href="{c['shop']}" target="_blank" rel="noopener">🛒 Commander le livre</a><a class="btn btn-sm btn-fiches" href="#fiches">📄 Fiches gratuites</a>{'<a class="btn btn-book open-book" href="#apercu">📖 Feuilleter le livre</a>' if c.get('apercu') else ''}<a class="btn btn-light" href="{WA_DIRECT}" target="_blank" rel="noopener">Une question ?</a></div></div>
 </div></div></section>
 
 {apercu_block(c)}
