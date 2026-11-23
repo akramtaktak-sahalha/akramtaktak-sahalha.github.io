@@ -94,10 +94,12 @@ if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.se
         if(android){const u=new URL(location.href);u.searchParams.set('notif',cls);u.hash='';
           location.href='intent://'+u.host+u.pathname+u.search+'#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(u.href)+';end';
           msg.innerHTML='Si Chrome ne s\'ouvre pas : appuie sur <b>⋮</b> en haut à droite puis <b>« Ouvrir dans le navigateur »</b>.'+alt;return}
-        {const u=new URL(location.href);u.searchParams.set('notif',cls);u.hash='';location.href='x-safari-'+u.href}
-        msg.innerHTML='Si Safari ne s\'ouvre pas :<br><b>1.</b> Appuie sur <b>•••</b> (ou ⬆️) en haut/bas de l\'écran<br><b>2.</b> Choisis <b>« Ouvrir dans Safari »</b><br><b>3.</b> Reviens sur ce bouton.'+alt;return}
+        {const u=new URL(location.href);u.searchParams.set('notif',cls);u.hash='';const link=u.href;
+         msg.innerHTML='Messenger/Instagram bloquent les notifications. Ouvre le site dans <b>Safari</b> :<ol><li>Appuie sur <b>•••</b> ou <b>⬆️</b> → <b>« Ouvrir dans Safari »</b></li><li>Sinon, copie le lien et colle-le dans Safari 👇</li></ol><button type="button" class="copy-link">📋 Copier le lien</button>'+alt;
+         msg.querySelector('.copy-link').onclick=async e=>{try{await navigator.clipboard.writeText(link)}catch(_){const t=document.createElement('textarea');t.value=link;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}e.target.textContent='✅ Lien copié — colle-le dans Safari'}}
+        return}
       if(ios&&!standalone){
-        msg.innerHTML='<span class="ios-steps">Sur iPhone, Apple demande d\'ajouter Sahalha à l\'écran d\'accueil (une seule fois) :<br><b>1.</b> Appuie sur <b>Partager</b> <span class="ico">⬆️</span> en bas de Safari<br><b>2.</b> Choisis <b>« Sur l\'écran d\'accueil »</b> <span class="ico">➕</span><br><b>3.</b> Ouvre l\'icône <b>Sahalha</b> et appuie sur ce bouton.</span>'+alt;return}
+        msg.innerHTML='Sur iPhone, Apple demande d\'ajouter Sahalha à l\'écran d\'accueil (une seule fois) :<ol><li>Appuie sur <b>Partager ⬆️</b> en bas de Safari</li><li>Choisis <b>« Sur l\'écran d\'accueil » ➕</b></li><li>Ouvre l\'icône <b>Sahalha</b> et appuie sur ce bouton</li></ol>'+alt;return}
       if(!('Notification' in window)||!('serviceWorker' in navigator)){msg.innerHTML='Ce navigateur ne gère pas les notifications. Ouvre le site dans <b>Chrome</b>.'+alt;return}
       go.disabled=true;msg.textContent='⏳ Un instant…';
       const ok=await waitOS();go.disabled=false;
