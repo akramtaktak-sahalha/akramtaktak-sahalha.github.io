@@ -7,14 +7,22 @@ document.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// Vidéo YouTube chargée au clic (site plus rapide)
-document.querySelectorAll('.video button').forEach(b=>b.addEventListener('click',()=>{
-  const f=document.createElement('iframe');
-  f.src='https://www.youtube-nocookie.com/embed/videoseries?list='+b.dataset.list+'&autoplay=1';
-  f.title='Vidéos Sahalha – Algorithme et Python';
-  f.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';f.allowFullscreen=true;
-  b.replaceWith(f);
-}));
+// Vidéo YouTube : chargée au clic ; dans TikTok/Instagram/Facebook on ouvre l'app YouTube
+const INAPP=/BytedanceWebview|musical_ly|TikTok|trill|Instagram|FBAN|FBAV|FB_IAB|FBIOS|Messenger/i.test(navigator.userAgent);
+document.querySelectorAll('.video-wrap').forEach(w=>{
+  const b=w.querySelector('.video button'),out=w.querySelector('.yt-out'),tip=w.querySelector('.inapp-tip');
+  if(INAPP&&tip)tip.hidden=false;
+  if(!b)return;
+  b.addEventListener('click',()=>{
+    if(INAPP){location.href=out.href;return}
+    const f=document.createElement('iframe');
+    f.src='https://www.youtube.com/embed/videoseries?list='+b.dataset.list+'&autoplay=1&rel=0&playsinline=1&origin='+encodeURIComponent(location.origin);
+    f.title='Vidéos Sahalha – Algorithme et Python';
+    f.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';f.allowFullscreen=true;
+    f.referrerPolicy='strict-origin-when-cross-origin';
+    b.replaceWith(f);
+  });
+});
 
 // Événements pixels (Meta + TikTok) : clic WhatsApp = Lead, clic boutique = intérêt d'achat, PDF = téléchargement
 const fire=(meta,tt,p={})=>{try{window.fbq&&fbq('track',meta,p)}catch(e){}try{window.ttq&&ttq.track(tt,p)}catch(e){}};

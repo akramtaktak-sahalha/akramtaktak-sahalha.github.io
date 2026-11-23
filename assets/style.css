@@ -206,3 +206,10 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);margin-top:30px;padding-
 .notif .chips button{border:1px solid rgba(255,178,122,.4);background:transparent;color:var(--peach);font:600 14px var(--font);padding:8px 14px;border-radius:999px;cursor:pointer;transition:.2s}
 .notif .chips button.on{background:var(--peach);color:var(--ink);border-color:var(--peach)}
 .notif-msg{display:block;margin-top:10px;color:#ffd2b0;font-size:14px}
+
+/* lien YouTube + astuce navigateur intégré */
+.video-wrap{display:flex;flex-direction:column;gap:12px}
+.yt-out{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;color:#fff;background:#e62117;padding:10px 16px;border-radius:12px}
+.yt-out:hover{background:#c4170f}
+.inapp-tip{margin:0;font-size:14px;color:var(--muted);background:var(--cream2);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.inapp-tip[hidden]{display:none}
