@@ -158,7 +158,7 @@ def apercu_block(c):
             f'<p class="sub">Tourne les pages comme un vrai livre : le menu, le cours, une série et sa correction.</p></div>'
             f'<div class="fb reveal" data-book="{esc(data)}"><div class="fb-stage"><div class="fb-book"></div></div>'
             f'<div class="fb-bar"><button class="fb-prev" aria-label="Page précédente">‹</button><div class="fb-info"><span class="fb-count"></span><div class="fb-prog"><i class="fb-free"></i><i class="fb-pos"></i></div></div><button class="fb-zoom" aria-label="Agrandir">🔍</button><button class="fb-next" aria-label="Page suivante">›</button></div>'
-            f'<p class="fb-hint">👆 Clique ou glisse pour tourner la page</p></div></div></section>'
+            f'<p class="fb-hint">👆 Clique sur une page pour la lire en grand · ‹ › ou glisse pour tourner</p></div></div></section>'
             '<div class="lb" hidden><button aria-label="Fermer">✕</button><img alt="Page du livre"></div>')
 
 def _blur(u):
