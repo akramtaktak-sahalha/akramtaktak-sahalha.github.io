@@ -33,8 +33,9 @@ def pixels():
     return s
 
 FICHES = DATA["fiches"]
+EXOS = DATA.setdefault("exercices", [])
 # Miniature auto : si une fiche n'a pas d'image, on la crée depuis la 1re page du PDF
-for _f in FICHES:
+for _f in FICHES + EXOS:
     if not _f.get("thumb") and _f.get("pdf", "").lower().endswith(".pdf"):
         try:
             import pymupdf
@@ -129,6 +130,22 @@ def fiche_cards(items):
         out.append(f'<a class="fiche reveal d{i%4}" href="{esc(pdf)}" target="_blank" rel="noopener" download>'
                    f'<div class="th">{img}</div><div class="meta"><b>{esc(t)}</b><span>⬇ PDF gratuit{pg}</span></div></a>')
     return "".join(out)
+
+def exo_cards(items):
+    out = []
+    for i, f in enumerate(items):
+        t, pdf, thumb, pages = f["title"], f["pdf"], f.get("thumb") or "", f.get("pages") or ""
+        img = f'<img src="{esc(thumb)}" alt="{esc(t)} – exercices gratuits Sahalha" loading="lazy" width="331" height="468">' if thumb else ""
+        pg = f" · {pages} pages" if pages else ""
+        corr = f'<a class="corr" href="{esc(f["correction"])}" target="_blank" rel="noopener" download>✅ Voir la correction</a>' if f.get("correction") else ""
+        out.append(f'<div class="fiche exo reveal d{i%4}"><a href="{esc(pdf)}" target="_blank" rel="noopener" download>'
+                   f'<div class="th">{img}</div><div class="meta"><b>{esc(t)}</b><span>✏️ Exercices gratuits{pg}</span></div></a>{corr}</div>')
+    return "".join(out)
+
+def exo_section(items, title, bg=""):
+    if not items: return ""
+    return (f'<section id="exercices"{bg}><div class="wrap"><div class="reveal"><span class="eyebrow">Gratuit</span><h2>{title}</h2>'
+            f'<p class="sub">Entraîne-toi, puis vérifie avec la correction.</p></div><div class="fiches">{exo_cards(items)}</div></div></section>')
 
 def video_block():
     return (f'<div class="video-wrap reveal"><div class="video"><button data-list="{YT_LIST}" aria-label="Lancer les vidéos Sahalha"><div><div class="play"></div>Voir les vidéos Sahalha</div></button></div>'
@@ -252,6 +269,7 @@ def class_page(c):
 <div class="reveal"><span class="eyebrow">Gratuit</span><h2>Fiches PDF – {c['short']}</h2><p class="sub">Clique pour ouvrir ou télécharger. Chaque fiche résume le cours avec les points « À retenir ».</p></div>
 <div class="fiches">{fiche_cards([f for f in FICHES if c['notif'] in (f.get('classes') or [])])}</div>
 </div></section>
+{exo_section([f for f in EXOS if c['notif'] in (f.get('classes') or [])], "Exercices gratuits – " + c['short'])}
 
 <section><div class="wrap"><div class="live reveal">
 <span class="dot"><i></i> Lives {c['short']}</span><h2>Lives et replays</h2><p class="sub">Les lives se font sur YouTube, avec questions/réponses. Chaque live reste enregistré : si tu le rates, tu le revois quand tu veux. Une question ? Écris-moi sur WhatsApp. <span class="ar">عندك سؤال؟ ابعثلي على الواتساب 👇</span></p>
