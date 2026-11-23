@@ -64,7 +64,9 @@ if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.se
     if(!seen())setTimeout(open,9000)});
   if(ios){btn.hidden=false;txt.innerHTML="Sur iPhone : appuie sur <b>Partager</b> ⬆️ en bas de Safari, puis <b>« Sur l'écran d'accueil »</b>.";go.textContent='OK, compris';
     if(!seen())setTimeout(open,9000)}
-  btn.onclick=e=>{e.preventDefault();open()};
+  const android=/android/i.test(navigator.userAgent),inapp=/FBAN|FBAV|FB_IAB|Instagram|Messenger|TikTok|BytedanceWebview|musical_ly|; wv\)/i.test(navigator.userAgent);
+  if(android&&!inapp){btn.hidden=false;if(!deferred){txt.innerHTML="Pour installer Sahalha : appuie sur <strong>⋮</strong> en haut à droite de Chrome, puis <strong>« Installer l'application »</strong> (ou « Ajouter à l'écran d'accueil »).";go.textContent='OK, compris'}}
+  btn.onclick=e=>{e.preventDefault();if(deferred){go.textContent='📲 Installer';txt.textContent="Ajoute Sahalha sur ton écran d'accueil : accès direct aux vidéos, fiches et lives, comme une vraie application."}open()};
   go.onclick=async()=>{if(deferred){deferred.prompt();const r=await deferred.userChoice;deferred=null;if(r.outcome==='accepted'){btn.hidden=true;try{window.fbq&&fbq('trackCustom','InstallApp')}catch(e){}}}close()};
 })();
 
