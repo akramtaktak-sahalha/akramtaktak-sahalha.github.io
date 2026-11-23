@@ -33,6 +33,8 @@ def pixels():
     return s
 
 FICHES = DATA["fiches"]
+import hashlib
+_V = lambda f: hashlib.md5(open(os.path.join(OUT, "assets", f), "rb").read()).hexdigest()[:8]
 EXOS = DATA.setdefault("exercices", [])
 # Miniature auto : si une fiche n'a pas d'image, on la crée depuis la 1re page du PDF
 for _f in FICHES + EXOS:
@@ -85,7 +87,7 @@ def head(title, desc, path, kw, extra_ld):
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23c2501f'/><g transform='translate(14 24) scale(1.15)' fill='white'><path d='M2 15 33 3l29 10-31 12z'/><path d='M14 20v10c0 7 34 7 34 0V20l-17 7z'/><path d='M8 17.5 6.5 33' stroke='white' stroke-width='2.6'/><rect x='3.5' y='32' width='6' height='7' rx='2'/></g></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/style.css?v={_V("style.css")}">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -118,7 +120,7 @@ def footer():
 </div><div class="copy">© {datetime.date.today().year} Sahalha · Akram Taktak · Algorithme, Python, informatique – Tunisie</div></div></footer>
 <div class="sheet" id="sheet" hidden><div class="sheet-in"><button class="x" aria-label="Fermer">×</button><div class="logo big">{HAT}</div><b>Installe l'app Sahalha</b><p id="sheet-txt"></p><button class="btn btn-main" id="sheet-go">📲 Installer</button></div></div>
 <a class="fab" href="{WA_DIRECT}" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp">{WA_SVG}</a>
-<script src="/assets/app.js" defer></script>
+<script src="/assets/app.js?v={_V("app.js")}" defer></script>
 </body></html>"""
 
 def fiche_cards(items):
