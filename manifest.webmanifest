@@ -1,0 +1,22 @@
+{
+  "name": "Sahalha – Algorithme & Python",
+  "short_name": "Sahalha",
+  "description": "Algorithme et Python expliqués en tunisien, de la 2ème au Bac : vidéos, lives, fiches PDF.",
+  "lang": "fr",
+  "start_url": "/?source=app",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fff7ef",
+  "theme_color": "#c2501f",
+  "icons": [
+    {"src": "/img/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/img/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "/img/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "Bac", "url": "/bac-algorithme-python-tunisie/"},
+    {"name": "3ème Sciences", "url": "/algorithme-python-3eme-sciences/"},
+    {"name": "2ème Sciences", "url": "/algorithme-python-2eme-sciences/"},
+    {"name": "2ème Informatique", "url": "/algorithme-python-2eme-informatique/"}
+  ]
+}
