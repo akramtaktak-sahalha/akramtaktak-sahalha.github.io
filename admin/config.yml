@@ -24,6 +24,7 @@ collections:
             collapsed: true
             fields:
               - {label: "WhatsApp (avec 216)", name: whatsapp, widget: string}
+              - {label: "Lien communauté WhatsApp (alertes)", name: whatsapp_community, widget: string, required: false}
               - {label: "Lien boutique Converty", name: shop, widget: string}
               - {label: "Chaîne YouTube", name: youtube, widget: string}
               - {label: "ID playlist YouTube (vidéos affichées)", name: youtube_playlist, widget: string}
