@@ -19,6 +19,7 @@ DATA = json.load(open(os.path.join(OUT, "content", "site.json"), encoding="utf-8
 _S = DATA["settings"]
 SHOP, YT, YT_LIST, TIKTOK, FB = _S["shop"], _S["youtube"], _S["youtube_playlist"], _S["tiktok"], _S["facebook"]
 WA_DIRECT = "https://wa.me/" + "".join(ch for ch in str(_S["whatsapp"]) if ch.isdigit())
+WA_COMM = _S.get("whatsapp_community", "")
 
 # Pixels publicitaires : colle les IDs ici puis relance build.py (vide = pas de pixel)
 META_PIXEL_ID = _S.get('meta_pixel','')     # ex. "123456789012345"
@@ -57,7 +58,7 @@ WA_SVG = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0
 
 NOTIF = lambda cls: f'''<div class="notif" data-cls="{cls}"><b>🔔 Reçois une alerte avant chaque live</b><p>Choisis ta classe puis active les notifications : tu seras prévenu(e) des lives, des nouvelles fiches et des promos.</p>
 <div class="chips">{"".join(f'<button type="button" data-v="{v}"' + (' class="on"' if v==cls else '') + f'>{n}</button>' for v,n in [("2sc","2ème Sc"),("2info","2ème Info"),("3sc","3ème"),("bac","Bac")])}</div>
-<button type="button" class="btn btn-main notif-go">🔔 Activer les notifications</button><small class="notif-msg"></small></div>'''
+<button type="button" class="btn btn-main notif-go">🔔 Activer les notifications</button>{('<a class="btn btn-wa notif-wa" href="' + WA_COMM + '" target="_blank" rel="noopener">💬 Rejoindre la communauté WhatsApp</a>') if WA_COMM else ""}<small class="notif-msg"></small></div>'''
 
 def esc(s): return html.escape(s, quote=True)
 
