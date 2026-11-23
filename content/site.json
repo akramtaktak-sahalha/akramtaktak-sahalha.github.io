@@ -1,0 +1,289 @@
+{
+ "settings": {
+  "whatsapp": "21623235642",
+  "shop": "https://sahalha-teshel.converty.shop",
+  "youtube": "https://www.youtube.com/@Sahalha_Teshel",
+  "youtube_playlist": "UUbSJk9ZAAfwo3VrJnnkOuQg",
+  "tiktok": "https://www.tiktok.com/@sahalha.teshal.akram",
+  "facebook": "https://www.facebook.com/sahalha.teshal.akram",
+  "meta_pixel": "1085747067843707",
+  "tiktok_pixel": "DBQRJAJC77UFHI4PL7N0"
+ },
+ "fiches": [
+  {
+   "title": "Rappel complet – Algorithme & Programmation 3ème Sciences",
+   "pdf": "/pdf/rappel-algorithme-programmation-3eme-sciences.pdf",
+   "thumb": "/img/fiches/rappel-algorithme-programmation-3eme-sciences.webp",
+   "pages": 12,
+   "classes": [
+    "3sc"
+   ],
+   "home": false
+  },
+  {
+   "title": "Fiche 01 – Opérations élémentaires & structures de données",
+   "pdf": "/pdf/fiche-01-operations-elementaires-structures-de-donnees.pdf",
+   "thumb": "/img/fiches/fiche-01-operations-elementaires-structures-de-donnees.webp",
+   "pages": 2,
+   "classes": [
+    "2sc",
+    "2info",
+    "3sc",
+    "bac"
+   ],
+   "home": true
+  },
+  {
+   "title": "Fiche 02 – Les structures conditionnelles (Si … Sinon)",
+   "pdf": "/pdf/fiche-02-structures-conditionnelles-si-sinon.pdf",
+   "thumb": "/img/fiches/fiche-02-structures-conditionnelles-si-sinon.webp",
+   "pages": 2,
+   "classes": [
+    "2sc",
+    "2info",
+    "3sc",
+    "bac"
+   ],
+   "home": true
+  },
+  {
+   "title": "Fiche 03 – La boucle Pour",
+   "pdf": "/pdf/fiche-03-boucle-pour.pdf",
+   "thumb": "/img/fiches/fiche-03-boucle-pour.webp",
+   "pages": 2,
+   "classes": [
+    "2sc",
+    "2info",
+    "3sc",
+    "bac"
+   ],
+   "home": true
+  },
+  {
+   "title": "Fiche 04 – Les tableaux à une dimension",
+   "pdf": "/pdf/fiche-04-tableaux.pdf",
+   "thumb": "/img/fiches/fiche-04-tableaux.webp",
+   "pages": 2,
+   "classes": [
+    "2info",
+    "3sc",
+    "bac"
+   ],
+   "home": true
+  },
+  {
+   "title": "Fiche 05 – Les boucles Répéter et Tant que",
+   "pdf": "/pdf/fiche-05-boucles-repeter-tant-que.pdf",
+   "thumb": "/img/fiches/fiche-05-boucles-repeter-tant-que.webp",
+   "pages": 2,
+   "classes": [
+    "3sc",
+    "bac"
+   ],
+   "home": false
+  },
+  {
+   "title": "Fiche 06 – Les sous-programmes (fonctions & procédures)",
+   "pdf": "/pdf/fiche-06-sous-programmes-fonctions-procedures.pdf",
+   "thumb": "/img/fiches/fiche-06-sous-programmes-fonctions-procedures.webp",
+   "pages": 2,
+   "classes": [
+    "3sc",
+    "bac"
+   ],
+   "home": false
+  },
+  {
+   "title": "Fiche 09 – Les algorithmes de recherche",
+   "pdf": "/pdf/fiche-09-algorithmes-de-recherche.pdf",
+   "thumb": "/img/fiches/fiche-09-algorithmes-de-recherche.webp",
+   "pages": 3,
+   "classes": [
+    "bac"
+   ],
+   "home": true
+  },
+  {
+   "title": "Fiche 10 – Le tri à bulles",
+   "pdf": "/pdf/fiche-10-tri-a-bulles.pdf",
+   "thumb": "/img/fiches/fiche-10-tri-a-bulles.webp",
+   "pages": 2,
+   "classes": [
+    "bac"
+   ],
+   "home": false
+  },
+  {
+   "title": "Fiche 11 – Le tri par sélection",
+   "pdf": "/pdf/fiche-11-tri-par-selection.pdf",
+   "thumb": "/img/fiches/fiche-11-tri-par-selection.webp",
+   "pages": 2,
+   "classes": [
+    "bac"
+   ],
+   "home": false
+  },
+  {
+   "title": "Fiche 12 – Le tri par insertion",
+   "pdf": "/pdf/fiche-12-tri-par-insertion.pdf",
+   "thumb": "/img/fiches/fiche-12-tri-par-insertion.webp",
+   "pages": 2,
+   "classes": [
+    "bac"
+   ],
+   "home": false
+  },
+  {
+   "title": "Fiche 13 – Qt Designer & Bac pratique",
+   "pdf": "/pdf/fiche-13-qt-designer-bac-pratique.pdf",
+   "thumb": "/img/fiches/fiche-13-qt-designer-bac-pratique.webp",
+   "pages": 4,
+   "classes": [
+    "bac"
+   ],
+   "home": true
+  }
+ ],
+ "classes": [
+  {
+   "slug": "algorithme-python-2eme-sciences",
+   "notif": "2sc",
+   "short": "2ème Sciences",
+   "num": "2",
+   "tag": "2ème année",
+   "title": "Algorithme et Python 2ème Sciences – Cours, exercices corrigés et fiches PDF | Sahalha",
+   "desc": "Algorithmique et programmation Python pour la 2ème année secondaire Sciences en Tunisie : vidéos expliquées en tunisien, fiches de révision PDF gratuites, exercices corrigés et livre Sahalha.",
+   "h1": "Algorithme & Python <em>2ème Sciences</em>",
+   "lead": "Tout pour démarrer l'algorithmique et Python en 2ème année secondaire (Sciences) : les bases expliquées simplement, en tunisien.",
+   "shop": "https://sahalha-teshel.converty.shop/category/2eme-sciences",
+   "book": "Le livre Algorithme & Programmation 2ème Sciences",
+   "bookpts": [
+    "Résumé du cours de chaque chapitre",
+    "6 séries d'exercices progressives",
+    "75+ exercices corrigés",
+    "Scripts Python détaillés"
+   ],
+   "chaps": [
+    "Opérations élémentaires",
+    "Variables et types",
+    "Entrées / sorties",
+    "Structures conditionnelles",
+    "Boucle Pour",
+    "Premiers programmes Python"
+   ],
+   "kw": "algorithme 2ème sciences, python 2ème année secondaire, informatique 2ème sciences tunisie",
+   "cover": "/img/livre-2eme-sciences.webp"
+  },
+  {
+   "slug": "algorithme-python-2eme-informatique",
+   "notif": "2info",
+   "short": "2ème Informatique",
+   "num": "2",
+   "tag": "Section Info",
+   "title": "Algorithme et Python 2ème Informatique (TIC) – Cours et exercices corrigés | Sahalha",
+   "desc": "Programmation Python et algorithmique pour la 2ème année secondaire section Informatique (Technologies de l'informatique) en Tunisie : vidéos en tunisien, fiches PDF gratuites, exercices corrigés.",
+   "h1": "Algorithme & Python <em>2ème Informatique</em>",
+   "lead": "La section Informatique demande de bonnes bases en algorithmique et en Python : on avance pas à pas, avec des exemples et des exercices corrigés.",
+   "shop": "https://sahalha-teshel.converty.shop/category/2-eme-informatique",
+   "book": "Le livre Algorithme & Programmation 2ème Informatique",
+   "bookpts": [
+    "Résumé du cours de chaque chapitre",
+    "13 séries progressives",
+    "140+ exercices corrigés",
+    "Scripts Python détaillés"
+   ],
+   "chaps": [
+    "Opérations élémentaires",
+    "Structures conditionnelles",
+    "Boucle Pour",
+    "Boucles Répéter / Tant que",
+    "Tableaux",
+    "Chaînes de caractères"
+   ],
+   "kw": "algorithme 2ème informatique, python 2ème TI, technologies de l'informatique tunisie",
+   "cover": "/img/livre-2eme-informatique.webp"
+  },
+  {
+   "slug": "algorithme-python-3eme-sciences",
+   "notif": "3sc",
+   "short": "3ème Sciences",
+   "num": "3",
+   "tag": "3ème année",
+   "title": "Algorithme et Python 3ème Sciences – Cours, rappel PDF et exercices corrigés | Sahalha",
+   "desc": "Algorithmique et programmation Python 3ème année secondaire (Math, Sciences expérimentales, Technique) en Tunisie : rappel de cours PDF gratuit, fiches, exercices corrigés et livre Sahalha.",
+   "h1": "Algorithme & Python <em>3ème Sciences</em>",
+   "lead": "Math, Sciences exp ou Technique : prépare le terrain pour le Bac avec un rappel complet, des fiches PDF et des exercices corrigés.",
+   "shop": "https://sahalha-teshel.converty.shop/category/3eme-secondaire",
+   "book": "Le livre Algorithme & Programmation 3ème Sciences",
+   "bookpts": [
+    "Résumé du cours de chaque chapitre",
+    "13 séries progressives",
+    "115+ exercices corrigés",
+    "Scripts Python détaillés"
+   ],
+   "chaps": [
+    "Structures de données",
+    "Structures conditionnelles",
+    "Boucles Pour / Répéter / Tant que",
+    "Tableaux",
+    "Chaînes de caractères",
+    "Sous-programmes"
+   ],
+   "kw": "algorithme 3ème sciences, python 3ème année secondaire, informatique 3ème math tunisie",
+   "cover": "/img/livre-3eme-sciences.webp"
+  },
+  {
+   "slug": "bac-algorithme-python-tunisie",
+   "notif": "bac",
+   "short": "Bac",
+   "num": "4",
+   "tag": "Bac 2027",
+   "title": "Bac Tunisie Algorithme et Programmation Python – Cours, sujets corrigés, Bac pratique | Sahalha",
+   "desc": "Réussir l'épreuve d'Algorithmique et Programmation au Bac Tunisie (Math, Sciences expérimentales, Technique) : fiches de révision PDF gratuites, tris, recherche, Qt Designer pour le Bac pratique, sujets Bac corrigés.",
+   "h1": "Bac Tunisie : <em>Algorithme & Python</em>",
+   "lead": "Bac Math, Sciences exp ou Technique : révise tout le programme, du cours aux sujets Bac corrigés, avec la préparation du Bac pratique (Python + Qt Designer).",
+   "shop": "https://sahalha-teshel.converty.shop/category/bac",
+   "book": "Le livre Algorithme & Programmation Bac (4ème)",
+   "bookpts": [
+    "Résumé du cours de chaque chapitre",
+    "18 séries progressives",
+    "105+ exercices corrigés",
+    "30+ sujets Bac corrigés",
+    "Bac pratique & théorique"
+   ],
+   "chaps": [
+    "Structures de données",
+    "Structures conditionnelles",
+    "Boucles",
+    "Tableaux",
+    "Chaînes",
+    "Sous-programmes",
+    "Algorithmes de recherche",
+    "Tri à bulles",
+    "Tri par sélection",
+    "Tri par insertion",
+    "Qt Designer & Bac pratique"
+   ],
+   "kw": "bac tunisie informatique, bac algorithme python, bac pratique python qt designer, sujets bac corrigés tunisie",
+   "cover": "/img/livre-bac.webp"
+  }
+ ],
+ "home_faq": [
+  {
+   "q": "Le contenu Sahalha est-il gratuit ?",
+   "a": "Oui : les vidéos, les lives et les fiches de révision PDF sont gratuits. Seuls les livres (PDF ou imprimés) sont payants, sur la boutique Sahalha."
+  },
+  {
+   "q": "Pour quelles classes ?",
+   "a": "2ème Sciences, 2ème Informatique, 3ème Sciences et Bac (Math, Sciences expérimentales, Technique), selon le programme officiel tunisien d'Algorithmique et Programmation."
+  },
+  {
+   "q": "Algorithme ou Python ?",
+   "a": "Les deux : chaque notion est expliquée en algorithme puis traduite en Python, côte à côte, comme demandé au Bac."
+  },
+  {
+   "q": "Comment suivre les lives ?",
+   "a": "Les lives se font sur YouTube : abonne-toi à la chaîne et active la cloche 🔔. Pour toute question, écris-moi directement sur WhatsApp (23 235 642)."
+  }
+ ]
+}
