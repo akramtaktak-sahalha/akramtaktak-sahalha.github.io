@@ -258,3 +258,13 @@ a.open-book img.cover{transition:transform .3s}a.open-book:hover img.cover{trans
 
 .notif .notif-wa{display:flex;justify-content:center;text-align:center;margin-top:10px;background:transparent;border:1.5px solid #25d366;color:#fff!important;box-shadow:none}
 .notif .notif-wa.main{background:#25d366;border-color:#25d366;font-size:1.05em;box-shadow:0 10px 24px -10px rgba(37,211,102,.7)}
+.invite{position:fixed;inset:0;z-index:90;background:rgba(30,12,4,.55);display:flex;align-items:flex-end;justify-content:center;opacity:0;transition:opacity .3s}
+.invite.on{opacity:1}.invite .inv-card{position:relative;width:min(100%,440px);background:linear-gradient(160deg,#3a170a,#6b2a0c);color:#fff;border-radius:22px 22px 0 0;padding:26px 22px 20px;text-align:center;transform:translateY(40px);transition:transform .35s}
+.invite.on .inv-card{transform:none}@media(min-width:720px){.invite{align-items:center}.invite .inv-card{border-radius:22px}}
+.invite .inv-ico{font-size:2.4rem;animation:ring 1.2s ease-in-out 2}@keyframes ring{20%{transform:rotate(-18deg)}40%{transform:rotate(14deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
+.invite b{display:block;font-size:1.2rem;margin:6px 0}.invite p{opacity:.85;margin:0 0 16px;font-size:.95rem}
+.invite .btn{display:flex;justify-content:center;width:100%;margin-top:10px;box-sizing:border-box}
+.invite .inv-wa{background:#25d366;color:#fff!important}.invite .inv-push{background:transparent;border:1.5px solid #ffb98f;color:#fff}
+.invite .inv-later{margin-top:12px;background:none;border:0;color:#ffd2b0;font-size:.9rem;cursor:pointer;text-decoration:underline}
+.invite .x{position:absolute;top:10px;right:14px;background:none;border:0;color:#fff;font-size:1.3rem;cursor:pointer}
+.notif.pulse{animation:npulse 1.2s ease-in-out 2}@keyframes npulse{50%{box-shadow:0 0 0 6px rgba(255,185,143,.6)}}

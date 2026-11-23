@@ -160,3 +160,41 @@ if('IntersectionObserver'in window){var io=new IntersectionObserver(function(es)
 render();
 document.querySelectorAll('.open-book').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();fb.closest('section').scrollIntoView({behavior:'smooth'});setTimeout(function(){if(cur===0)go(1)},700)})});
 });})();
+
+// Invitation « Ne rate aucun live » : 2 fois max pendant la navigation, plus jamais après inscription
+(()=>{
+  const wa=document.querySelector('.notif-wa'),box=document.querySelector('.notif');if(!wa||!box)return;
+  const ua=navigator.userAgent,ios=/iphone|ipad|ipod/i.test(ua),standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+  const g=k=>{try{return +localStorage.getItem(k)||0}catch(e){return 99}},s=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+  const views=g('sh-v')+1;s('sh-v',views);
+  const shown=g('sh-inv'),done=g('sh-joined');
+  wa.addEventListener('click',()=>s('sh-joined',1));
+  if(done||shown>=2)return;
+  // 1re fois : à la 2e page vue (ou après 25 s sur la 1re) ; 2e fois : au moins 2 pages plus tard
+  const last=g('sh-inv-at');
+  if(shown===1&&views-last<2)return;
+  const delay=(shown===0&&views===1)?25000:9000;
+  const subbed=()=>{try{return window.__os&&window.__os.User.PushSubscription.optedIn}catch(e){return false}};
+  const canPush=!ios||standalone;
+  const open=()=>{
+    if(subbed()){s('sh-joined',1);return}
+    const other=document.getElementById('sheet');if(other&&!other.hidden){setTimeout(open,8000);return}
+    s('sh-inv',shown+1);s('sh-inv-at',views);
+    const el=document.createElement('div');el.className='invite';el.innerHTML=
+      '<div class="inv-card" role="dialog" aria-label="Ne rate aucun live"><button class="x" aria-label="Fermer">✕</button>'+
+      '<div class="inv-ico">🔔</div><b>Ne rate aucun live ni nouvelle fiche</b>'+
+      '<p>Rejoins les élèves Sahalha : tu es prévenu(e) avant chaque live, gratuitement.</p>'+
+      '<a class="btn inv-wa" href="'+wa.href+'" target="_blank" rel="noopener">💬 Rejoindre la communauté WhatsApp</a>'+
+      (canPush?'<button class="btn inv-push">🔔 Activer les notifications</button>':'')+
+      '<button class="inv-later">Plus tard</button></div>';
+    document.body.appendChild(el);requestAnimationFrame(()=>el.classList.add('on'));
+    const close=()=>{el.classList.remove('on');setTimeout(()=>el.remove(),300)};
+    el.querySelector('.x').onclick=close;el.querySelector('.inv-later').onclick=close;el.onclick=e=>{if(e.target===el)close()};
+    el.querySelector('.inv-wa').onclick=()=>{s('sh-joined',1);try{window.fbq&&fbq('track','Lead');window.ttq&&ttq.track('Contact')}catch(e){}close()};
+    const p=el.querySelector('.inv-push');if(p)p.onclick=()=>{close();box.scrollIntoView({behavior:'smooth',block:'center'});box.classList.add('pulse');setTimeout(()=>box.classList.remove('pulse'),2400);
+      if(box.querySelector('.chips .on'))setTimeout(()=>box.querySelector('.notif-go').click(),700);
+      else box.querySelector('.notif-msg').textContent='👆 Choisis ta classe puis appuie sur « Activer ».'};
+    try{window.fbq&&fbq('trackCustom','InviteShown')}catch(e){}
+  };
+  setTimeout(open,delay);
+})();
