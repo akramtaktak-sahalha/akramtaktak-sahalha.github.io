@@ -132,4 +132,6 @@ fb.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(1);if(e.key
 fb.querySelector('.fb-zoom').onclick=function(){show(Math.min(Math.max(seen()-1,0),vis.length-1))};
 if(lb&&!lb._b){lb._b=1;lb.addEventListener('click',function(){lb.hidden=true});document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')lb.hidden=true;})}
 if('IntersectionObserver'in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){fb.classList.add('fb-peek');io.disconnect()}},{threshold:.5});io.observe(fb)}
-render();});})();
+render();
+document.querySelectorAll('.open-book').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();fb.closest('section').scrollIntoView({behavior:'smooth'});setTimeout(function(){if(cur===0)go(1)},700)})});
+});})();

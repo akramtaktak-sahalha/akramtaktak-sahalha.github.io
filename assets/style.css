@@ -249,3 +249,5 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);margin-top:30px;padding-
 .lb img{display:block;margin:0 auto;width:min(100%,1000px);height:auto;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.5);background:#fff}.lb .lb-nav{z-index:2;position:fixed;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.15)!important;font-size:2rem!important;line-height:1}.lb .lb-p{left:10px}.lb .lb-n{right:10px}.lb .lb-c{position:fixed;top:14px;left:50%;transform:translateX(-50%);color:#fff;font-weight:700;font-size:.9rem}.lb button{position:fixed;z-index:2;top:12px;right:16px;font-size:1.6rem;background:none;border:0;color:#fff;cursor:pointer}
 
 .face:not(.lock):not(.end):not(.blank){cursor:zoom-in}
+.btn-book{background:#2b1206;color:#fff!important;box-shadow:0 8px 20px -8px rgba(43,18,6,.6)}.btn-book:hover{background:#4a1f0a}
+a.open-book img.cover{transition:transform .3s}a.open-book:hover img.cover{transform:rotate(-2deg) scale(1.02)}
