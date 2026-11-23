@@ -93,6 +93,7 @@ collections:
               - {label: "Nom du livre", name: book, widget: string}
               - {label: "Points forts du livre", name: bookpts, widget: list, field: {label: Point, name: p, widget: string}}
               - {label: "Lien Converty du livre", name: shop, widget: string}
+              - {label: "Nombre total de pages du livre", name: pages_livre, widget: number, required: false}
               - {label: "Aperçu : pages visibles (glisser pour l'ordre)", name: apercu, widget: list, required: false, field: {label: Page, name: img, widget: image, media_folder: /img/apercu, public_folder: /img/apercu}}
               - {label: "Aperçu : pages verrouillées (floutées automatiquement)", name: apercu_flou, widget: list, required: false, field: {label: Page, name: img, widget: image, media_folder: /img/apercu, public_folder: /img/apercu}}
               - {label: "Chapitres", name: chaps, widget: list, field: {label: Chapitre, name: c, widget: string}}
