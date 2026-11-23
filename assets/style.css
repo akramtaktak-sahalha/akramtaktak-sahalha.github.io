@@ -274,3 +274,15 @@ a.open-book img.cover{transition:transform .3s}a.open-book:hover img.cover{trans
 .invite .inv-fiches{display:block;margin-top:12px;color:#ffd2b0;font-weight:700;font-size:.95rem;text-decoration:none}
 @media(max-width:600px){.notif .notif-wa{margin-left:0}}
 .notif .notif-go,.notif .notif-wa{margin-top:14px;vertical-align:middle}
+@media(max-width:600px){
+.fiches{grid-template-columns:1fr 1fr;gap:10px}
+.fiche .meta{padding:10px 10px 12px}.fiche .meta b{font-size:13px}.fiche .meta span{font-size:11.5px;margin-top:6px}
+#livre .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+#livre .btns .btn{justify-content:center;margin:0;width:100%;box-sizing:border-box;text-align:center}
+#livre .btns .btn-main,#livre .btns .btn-book{grid-column:1/-1}
+#livre .btns .btn-sm,#livre .btns .btn-light{font-size:14px;padding:12px 10px}
+}
+@media(max-width:600px){
+#livre .btns .btn-main{order:1}#livre .btns .btn-book{order:2}#livre .btns .btn-fiches{order:3}#livre .btns .btn-light{order:4}
+#livre .btns .btn-fiches,#livre .btns .btn-light{white-space:nowrap;font-size:13.5px;padding:12px 6px;gap:6px}
+}
