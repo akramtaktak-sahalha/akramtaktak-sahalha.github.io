@@ -92,3 +92,7 @@ if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.se
     };
   });
 })();
+
+(function(){var lb=document.querySelector('.lb');if(!lb)return;var im=lb.querySelector('img');
+document.querySelectorAll('.flip button.pg').forEach(function(b){b.addEventListener('click',function(){im.src=b.dataset.src;lb.hidden=false;})});
+lb.addEventListener('click',function(){lb.hidden=true;im.src='';});document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true;});})();
