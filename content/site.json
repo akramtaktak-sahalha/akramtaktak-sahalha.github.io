@@ -184,7 +184,8 @@
         "/img/apercu/flou-2sc-p20.webp",
         "/img/apercu/flou-2sc-p36.webp",
         "/img/apercu/flou-2sc-p58.webp"
-      ]
+      ],
+      "pages_livre": 68
     },
     {
       "slug": "algorithme-python-2eme-informatique",
@@ -227,7 +228,8 @@
         "/img/apercu/flou-2info-p39.webp",
         "/img/apercu/flou-2info-p95.webp",
         "/img/apercu/flou-2info-p146.webp"
-      ]
+      ],
+      "pages_livre": 154
     },
     {
       "slug": "algorithme-python-3eme-sciences",
@@ -272,7 +274,8 @@
         "/img/apercu/flou-3sc-p62.webp",
         "/img/apercu/flou-3sc-p114.webp",
         "/img/apercu/flou-3sc-p174.webp"
-      ]
+      ],
+      "pages_livre": 186
     },
     {
       "slug": "bac-algorithme-python-tunisie",
@@ -325,7 +328,8 @@
         "/img/apercu/flou-bac-p98.webp",
         "/img/apercu/flou-bac-p153.webp",
         "/img/apercu/flou-bac-p212.webp"
-      ]
+      ],
+      "pages_livre": 228
     }
   ],
   "home_faq": [
