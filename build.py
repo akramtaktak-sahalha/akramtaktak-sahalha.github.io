@@ -286,7 +286,7 @@ def class_page(c):
 <div class="reveal in"><div class="crumbs"><a href="/">Accueil</a> › {c['short']}</div>
 <h1>{c['h1']}</h1><p class="lead">{esc(c['lead'])}</p><span class="ar">مرحبا بيك، هنا تلقى كل شي باش تفهم وتنجح 💯</span>
 <div class="btns"><a class="btn btn-main" href="#fiches">📄 Fiches PDF gratuites</a><a class="btn btn-ghost" href="#livre">📚 Le livre</a></div></div>
-<div class="reveal in d2"><img class="cover" src="{c['cover']}" alt="{esc(c['book'])} – Sahalha, Tunisie" width="900" height="1200"></div>
+<div class="reveal in d2"><a href="#apercu" class="open-book" aria-label="Feuilleter le livre"><img class="cover" src="{c['cover']}" alt="{esc(c['book'])} – Sahalha, Tunisie" width="900" height="1200"></a></div>
 </div></section>
 
 <section><div class="wrap split">
@@ -309,7 +309,7 @@ def class_page(c):
 <section id="livre"><div class="wrap"><div class="book reveal">
 <img src="{c['cover']}" alt="Couverture – {esc(c['book'])}" width="900" height="1200" loading="lazy">
 <div><span class="eyebrow">Le livre</span><h2>{esc(c['book'])}</h2><ul class="checks">{pts}</ul>
-<div class="btns"><a class="btn btn-main" href="{c['shop']}" target="_blank" rel="noopener">🛒 Commander le livre</a><a class="btn btn-light" href="{WA_DIRECT}" target="_blank" rel="noopener">Une question ?</a></div></div>
+<div class="btns"><a class="btn btn-main" href="{c['shop']}" target="_blank" rel="noopener">🛒 Commander le livre</a>{'<a class="btn btn-book open-book" href="#apercu">📖 Feuilleter le livre</a>' if c.get('apercu') else ''}<a class="btn btn-light" href="{WA_DIRECT}" target="_blank" rel="noopener">Une question ?</a></div></div>
 </div></div></section>
 
 {apercu_block(c)}
