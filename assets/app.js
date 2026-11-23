@@ -81,15 +81,35 @@ if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.se
     b.querySelectorAll('.chips button').forEach(c=>c.onclick=()=>{cls=c.dataset.v;b.querySelectorAll('.chips button').forEach(x=>x.classList.toggle('on',x===c));if(sub())save()});
     const msg=b.querySelector('.notif-msg');
     const save=async()=>{try{await window.__os.User.addTags({classe:cls||'tous',annee:ANNEE});msg.textContent='✅ Classe enregistrée : '+(b.querySelector('.chips .on')?.textContent||'toutes')}catch(e){}};
-    b.querySelector('.notif-go').onclick=async()=>{
+    const go=b.querySelector('.notif-go');
+    const ua=navigator.userAgent,android=/android/i.test(ua);
+    const inapp=/BytedanceWebview|musical_ly|TikTok|trill|Instagram|FBAN|FBAV|FB_IAB|FBIOS|Messenger|Snapchat|Line\//i.test(ua)||(android&&/; wv\)/.test(ua));
+    const yt=(document.querySelector('a[href*="youtube.com/@"],a[href*="youtube.com/c"]')||{}).href||'https://www.youtube.com';
+    const alt='<br><small>Ou abonne-toi à la chaîne <a href="'+yt+'" target="_blank" rel="noopener"><b>YouTube</b></a> et appuie sur 🔔 : tu seras aussi prévenu(e) des lives.</small>';
+    if(inapp){go.textContent=android?'🌐 Ouvrir dans Chrome pour activer':'🌐 Ouvrir dans Safari pour activer'}
+    const waitOS=()=>new Promise(r=>{if(window.__os)return r(true);let n=0;const t=setInterval(()=>{if(window.__os||++n>25){clearInterval(t);r(!!window.__os)}},200)});
+    go.onclick=async()=>{
       if(!cls){msg.textContent='👆 Choisis d\'abord ta classe.';return}
-      if(ios&&!standalone){msg.innerHTML='Sur iPhone : appuie sur <b>Partager ⬆️</b> puis <b>« Sur l\'écran d\'accueil »</b>, ouvre l\'app Sahalha et reviens ici.';return}
-      if(!window.__os){msg.textContent='Un instant… réessaie dans 2 secondes.';return}
+      if(inapp){
+        if(android){const u=new URL(location.href);u.searchParams.set('notif',cls);u.hash='';
+          location.href='intent://'+u.host+u.pathname+u.search+'#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+encodeURIComponent(u.href)+';end';
+          msg.innerHTML='Si Chrome ne s\'ouvre pas : appuie sur <b>⋮</b> en haut à droite puis <b>« Ouvrir dans le navigateur »</b>.'+alt;return}
+        {const u=new URL(location.href);u.searchParams.set('notif',cls);u.hash='';location.href='x-safari-'+u.href}
+        msg.innerHTML='Si Safari ne s\'ouvre pas :<br><b>1.</b> Appuie sur <b>•••</b> (ou ⬆️) en haut/bas de l\'écran<br><b>2.</b> Choisis <b>« Ouvrir dans Safari »</b><br><b>3.</b> Reviens sur ce bouton.'+alt;return}
+      if(ios&&!standalone){
+        msg.innerHTML='<span class="ios-steps">Sur iPhone, Apple demande d\'ajouter Sahalha à l\'écran d\'accueil (une seule fois) :<br><b>1.</b> Appuie sur <b>Partager</b> <span class="ico">⬆️</span> en bas de Safari<br><b>2.</b> Choisis <b>« Sur l\'écran d\'accueil »</b> <span class="ico">➕</span><br><b>3.</b> Ouvre l\'icône <b>Sahalha</b> et appuie sur ce bouton.</span>'+alt;return}
+      if(!('Notification' in window)||!('serviceWorker' in navigator)){msg.innerHTML='Ce navigateur ne gère pas les notifications. Ouvre le site dans <b>Chrome</b>.'+alt;return}
+      go.disabled=true;msg.textContent='⏳ Un instant…';
+      const ok=await waitOS();go.disabled=false;
+      if(!ok){msg.innerHTML='Connexion lente : réessaie dans quelques secondes.'+alt;return}
       try{await window.__os.Notifications.requestPermission();
         if(sub()){await save();refresh();try{window.fbq&&fbq('track','Subscribe');window.ttq&&ttq.track('Subscribe')}catch(e){}}
-        else msg.textContent='Notifications refusées. Tu peux les autoriser dans les réglages du navigateur (🔒 à côté de l\'adresse).'}
-      catch(e){msg.textContent='Ton navigateur ne supporte pas les notifications.'}
+        else msg.innerHTML='Notifications refusées. Pour les autoriser : 🔒 à côté de l\'adresse → <b>Autorisations</b> → <b>Notifications</b>.'+alt}
+      catch(e){msg.innerHTML='Ton navigateur ne supporte pas les notifications.'+alt}
     };
+    // arrivée depuis Messenger/Facebook : classe déjà choisie
+    const q=new URLSearchParams(location.search).get('notif');
+    if(q&&!inapp){const c=b.querySelector('.chips button[data-v="'+q+'"]');if(c){c.click();setTimeout(()=>{b.scrollIntoView({behavior:'smooth',block:'center'});msg.textContent='👉 Appuie maintenant sur « Activer les notifications ».'},600)}}
   });
 })();
 
