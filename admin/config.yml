@@ -34,23 +34,45 @@ collections:
           - label: Fiches PDF gratuites (glisser pour changer l'ordre)
             name: fiches
             widget: list
-            summary: "{{fields.title}}"
+            summary: "{{fields.title}}  ·  {{fields.classes}}"
             collapsed: true
             fields:
               - {label: Titre, name: title, widget: string}
               - {label: Fichier PDF, name: pdf, widget: file, media_folder: /pdf, public_folder: /pdf}
               - {label: "Miniature (laisser vide = créée automatiquement)", name: thumb, widget: image, required: false, media_folder: /img/fiches, public_folder: /img/fiches}
               - {label: "Nombre de pages (vide = automatique)", name: pages, widget: number, required: false}
-              - label: Classes où la fiche apparaît
+              - label: "Niveau(x) : la fiche apparaît sur la page de ces classes"
                 name: classes
                 widget: select
                 multiple: true
+                min: 1
                 options:
                   - {label: "2ème Sciences", value: 2sc}
                   - {label: "2ème Informatique", value: 2info}
                   - {label: "3ème Sciences", value: 3sc}
                   - {label: "Bac", value: bac}
               - {label: "Afficher aussi sur l'accueil", name: home, widget: boolean, default: false}
+          - label: Exercices gratuits (glisser pour changer l'ordre)
+            name: exercices
+            widget: list
+            summary: "{{fields.title}}  ·  {{fields.classes}}"
+            collapsed: true
+            fields:
+              - {label: Titre, name: title, widget: string}
+              - {label: PDF des exercices, name: pdf, widget: file, media_folder: /pdf, public_folder: /pdf}
+              - {label: "PDF de la correction (optionnel)", name: correction, widget: file, required: false, media_folder: /pdf, public_folder: /pdf}
+              - {label: "Miniature (laisser vide = créée automatiquement)", name: thumb, widget: image, required: false, media_folder: /img/fiches, public_folder: /img/fiches}
+              - {label: "Nombre de pages (vide = automatique)", name: pages, widget: number, required: false}
+              - label: "Niveau(x) : l'exercice apparaît sur la page de ces classes"
+                name: classes
+                widget: select
+                multiple: true
+                min: 1
+                options:
+                  - {label: "2ème Sciences", value: 2sc}
+                  - {label: "2ème Informatique", value: 2info}
+                  - {label: "3ème Sciences", value: 3sc}
+                  - {label: "Bac", value: bac}
           - label: Classes (pages)
             name: classes
             widget: list
