@@ -264,7 +264,7 @@ def class_page(c):
     faq = [
      (f"Les fiches PDF {c['short']} sont-elles gratuites ?", "Oui, toutes les fiches de cette page se téléchargent gratuitement en PDF."),
      (f"Le livre {c['short']} suit-il le programme officiel ?", "Oui : il suit le programme tunisien d'Algorithmique et Programmation, avec le cours, les séries d'exercices et les corrections en algorithme et en Python."),
-     ("Comment être informé des lives ?", "Abonne-toi à la chaîne YouTube et active la cloche 🔔. Pour toute question, écris-moi sur WhatsApp (23 235 642)."),
+     ("Comment être informé des lives ?", "Rejoins la communauté WhatsApp Sahalha (bouton vert « Rejoindre la communauté WhatsApp » sur cette page) : tu reçois une alerte avant chaque live et à chaque nouvelle fiche. Les lives se font sur YouTube. Pour toute question, écris-moi sur WhatsApp (23 235 642)."),
     ]
     url = f"{BASE}/{c['slug']}/"
     ld = {"@context": "https://schema.org", "@graph": [
