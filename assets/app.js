@@ -187,11 +187,13 @@ document.querySelectorAll('.open-book').forEach(function(a){a.addEventListener('
       '<div class="inv-ico">🔔</div><b>Ne rate aucun live ni nouvelle fiche</b>'+
       '<p>Rejoins les élèves Sahalha : tu es prévenu(e) avant chaque live, gratuitement.</p>'+
       '<a class="btn inv-wa" href="'+wa.href+'" target="_blank" rel="noopener">💬 Rejoindre la communauté WhatsApp</a>'+
+      (document.getElementById('fiches')?'<a class="inv-fiches" href="#fiches">📄 Voir les fiches PDF gratuites</a>':'')+
       (canPush?'<button class="btn inv-push">🔔 Activer les notifications</button>':'')+
       '<button class="inv-later">Plus tard</button></div>';
     document.body.appendChild(el);requestAnimationFrame(()=>el.classList.add('on'));
     const close=()=>{el.classList.remove('on');setTimeout(()=>el.remove(),300)};
     el.querySelector('.x').onclick=close;el.querySelector('.inv-later').onclick=close;el.onclick=e=>{if(e.target===el)close()};
+    {const f=el.querySelector('.inv-fiches');if(f)f.onclick=()=>close()}
     el.querySelector('.inv-wa').onclick=()=>{s('sh-joined',1);try{window.fbq&&fbq('track','Lead');window.ttq&&ttq.track('Contact')}catch(e){}close()};
     const p=el.querySelector('.inv-push');if(p)p.onclick=()=>{close();box.scrollIntoView({behavior:'smooth',block:'center'});box.classList.add('pulse');setTimeout(()=>box.classList.remove('pulse'),2400);
       if(box.querySelector('.chips .on'))setTimeout(()=>box.querySelector('.notif-go').click(),700);

@@ -268,3 +268,7 @@ a.open-book img.cover{transition:transform .3s}a.open-book:hover img.cover{trans
 .invite .inv-later{margin-top:12px;background:none;border:0;color:#ffd2b0;font-size:.9rem;cursor:pointer;text-decoration:underline}
 .invite .x{position:absolute;top:10px;right:14px;background:none;border:0;color:#fff;font-size:1.3rem;cursor:pointer}
 .notif.pulse{animation:npulse 1.2s ease-in-out 2}@keyframes npulse{50%{box-shadow:0 0 0 6px rgba(255,185,143,.6)}}
+
+.btn.btn-sm{font-size:14px;padding:10px 16px;border-radius:12px}
+.btn-fiches{background:#fff3e8;color:#c4501a!important;border:1.5px solid #f2b48d;align-self:center}.btn-fiches:hover{background:#ffe6d2}
+.invite .inv-fiches{display:block;margin-top:12px;color:#ffd2b0;font-weight:700;font-size:.95rem;text-decoration:none}
