@@ -2,7 +2,7 @@ name: Rebuild site
 on:
   push:
     branches: [main]
-    paths: ["content/**", "build.py", "pdf/**"]
+    paths: ["content/**", "build.py", "pdf/**", "img/apercu/**"]
   workflow_dispatch:
 permissions:
   contents: write
@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
-      - run: pip install pymupdf
+      - run: pip install pymupdf pillow
       - run: python build.py https://akramtaktak-sahalha.github.io
       - name: Commit generated pages
         run: |
