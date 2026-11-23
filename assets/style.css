@@ -255,3 +255,6 @@ a.open-book img.cover{transition:transform .3s}a.open-book:hover img.cover{trans
 .notif .notif-msg ol{margin:6px 0 8px;padding-left:20px}.notif .notif-msg li{margin:3px 0}
 .notif .notif-msg small{display:block;margin-top:8px;opacity:.85}
 .notif .copy-link{margin-top:8px;padding:9px 14px;border-radius:10px;border:1px solid #ffd2b0;background:transparent;color:#fff;font-weight:700;cursor:pointer}
+
+.notif .notif-wa{display:flex;justify-content:center;text-align:center;margin-top:10px;background:transparent;border:1.5px solid #25d366;color:#fff!important;box-shadow:none}
+.notif .notif-wa.main{background:#25d366;border-color:#25d366;font-size:1.05em;box-shadow:0 10px 24px -10px rgba(37,211,102,.7)}

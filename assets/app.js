@@ -86,6 +86,9 @@ if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.se
     const inapp=/BytedanceWebview|musical_ly|TikTok|trill|Instagram|FBAN|FBAV|FB_IAB|FBIOS|Messenger|Snapchat|Line\//i.test(ua)||(android&&/; wv\)/.test(ua));
     const yt=(document.querySelector('a[href*="youtube.com/@"],a[href*="youtube.com/c"]')||{}).href||'https://www.youtube.com';
     const alt='<br><small>Ou abonne-toi à la chaîne <a href="'+yt+'" target="_blank" rel="noopener"><b>YouTube</b></a> et appuie sur 🔔 : tu seras aussi prévenu(e) des lives.</small>';
+    const wa=b.querySelector('.notif-wa');
+    if(wa&&ios&&!standalone){go.style.display='none';wa.classList.add('main');msg.innerHTML='Sur iPhone, le plus simple : rejoins la communauté WhatsApp, tu recevras les alertes des lives et des nouvelles fiches.'}
+    if(wa)wa.addEventListener('click',()=>{try{window.fbq&&fbq('track','Lead');window.ttq&&ttq.track('Contact')}catch(e){}});
     if(inapp){go.textContent=android?'🌐 Ouvrir dans Chrome pour activer':'🌐 Ouvrir dans Safari pour activer'}
     const waitOS=()=>new Promise(r=>{if(window.__os)return r(true);let n=0;const t=setInterval(()=>{if(window.__os||++n>25){clearInterval(t);r(!!window.__os)}},200)});
     go.onclick=async()=>{
