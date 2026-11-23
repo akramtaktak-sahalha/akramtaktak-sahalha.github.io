@@ -126,7 +126,7 @@ var mobile=matchMedia('(max-width:720px)').matches;
 var pages=D.ok.map(function(u){return{src:u}}).concat(D.lock.map(function(u){return{src:u,lock:1}})).concat([{end:1}]);
 function face(p,cls){var f=document.createElement('div');f.className='face '+cls;if(!p){f.classList.add('blank');return f}
  if(p.end){f.classList.add('end');f.innerHTML='<div class="big">🔓</div><h3>Tu as vu '+(D.total?Math.max(1,Math.round(D.ok.length*100/D.total)):5)+'% du livre</h3><p>Débloque les '+(D.total||'')+' pages : tout le cours, toutes les séries et leurs corrections.</p><a class="btn btn-main" href="'+D.shop+'" target="_blank" rel="noopener">Débloquer le livre</a>';return f}
- var i=new Image();i.src=p.src;i.loading='lazy';i.alt='Aperçu du livre '+D.name;f.appendChild(i);if(p.lock)f.classList.add('lock');f._p=p;return f}
+ var i=new Image();i.src=p.src;i.loading=(p.src===D.ok[0])?'eager':'lazy';i.alt='Aperçu du livre '+D.name;f.appendChild(i);if(p.lock)f.classList.add('lock');f._p=p;return f}
 var leaves=[],step=mobile?1:2;
 for(var k=0;k*step<pages.length;k++){var l=document.createElement('div');l.className='leaf';
  l.appendChild(face(pages[k*step],'front'));l.appendChild(face(mobile?null:(k===0?null:pages[k*step+1]),'back'));
