@@ -213,3 +213,5 @@ footer .copy{border-top:1px solid rgba(255,255,255,.08);margin-top:30px;padding-
 .yt-out:hover{background:#c4170f}
 .inapp-tip{margin:0;font-size:14px;color:var(--muted);background:var(--cream2);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
 .inapp-tip[hidden]{display:none}
+
+.fiche.exo{display:flex;flex-direction:column}.fiche.exo>a:first-child{color:inherit;text-decoration:none;display:block}.fiche.exo .corr{display:block;margin:0 12px 12px;padding:8px 10px;border-radius:10px;background:#e8f7ee;color:#137a3d;font-weight:700;text-align:center;text-decoration:none;font-size:.9em}
