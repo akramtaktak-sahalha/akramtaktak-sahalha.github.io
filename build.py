@@ -169,7 +169,9 @@ def fiche_cards(keys):
     return "".join(out)
 
 def video_block():
-    return f'<div class="video reveal"><button data-list="{YT_LIST}" aria-label="Lancer les vidéos Sahalha"><div><div class="play"></div>Voir les vidéos Sahalha</div></button></div>'
+    return (f'<div class="video-wrap reveal"><div class="video"><button data-list="{YT_LIST}" aria-label="Lancer les vidéos Sahalha"><div><div class="play"></div>Voir les vidéos Sahalha</div></button></div>'
+            f'<a class="yt-out" href="{YT}/videos" target="_blank" rel="noopener">▶ Regarder sur YouTube</a>'
+            f'<p class="inapp-tip" hidden>📱 Tu es dans TikTok / Instagram / Facebook : appuie sur <b>⋯</b> en haut puis <b>« Ouvrir dans le navigateur »</b> pour voir les vidéos ici, ou clique sur « Regarder sur YouTube ».</p></div>')
 
 def faq_block(items):
     return "".join(f'<details class="reveal"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in items)
