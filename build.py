@@ -14,9 +14,15 @@ YT_LIST = "UUbSJk9ZAAfwo3VrJnnkOuQg"
 TIKTOK = "https://www.tiktok.com/@sahalha.teshal.akram"
 FB = "https://www.facebook.com/sahalha.teshal.akram"
 
+# Contenu éditable (admin /admin → content/site.json)
+DATA = json.load(open(os.path.join(OUT, "content", "site.json"), encoding="utf-8"))
+_S = DATA["settings"]
+SHOP, YT, YT_LIST, TIKTOK, FB = _S["shop"], _S["youtube"], _S["youtube_playlist"], _S["tiktok"], _S["facebook"]
+WA_DIRECT = "https://wa.me/" + "".join(ch for ch in str(_S["whatsapp"]) if ch.isdigit())
+
 # Pixels publicitaires : colle les IDs ici puis relance build.py (vide = pas de pixel)
-META_PIXEL_ID = "1085747067843707"     # ex. "123456789012345"
-TIKTOK_PIXEL_ID = "DBQRJAJC77UFHI4PL7N0"   # ex. "CABCDEF123456789"
+META_PIXEL_ID = _S.get('meta_pixel','')     # ex. "123456789012345"
+TIKTOK_PIXEL_ID = _S.get('tiktok_pixel','')   # ex. "CABCDEF123456789"
 
 def pixels():
     s = ""
@@ -26,67 +32,22 @@ def pixels():
         s += f"""<script>!function(w,d,t){{w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];ttq.setAndDefer=function(t,e){{t[e]=function(){{t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){{for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e}};ttq.load=function(e,n){{var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{{}};ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{{}};ttq._t[e]=+new Date;ttq._o=ttq._o||{{}};ttq._o[e]=n||{{}};var o=d.createElement("script");o.type="text/javascript";o.async=!0;o.src=i+"?sdkid="+e+"&lib="+t;var a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)}};ttq.load('{TIKTOK_PIXEL_ID}');ttq.page();}}(window,document,'ttq');</script>"""
     return s
 
-FICHES = {
- "01": ("Fiche 01 – Opérations élémentaires & structures de données", "fiche-01-operations-elementaires-structures-de-donnees", 2),
- "02": ("Fiche 02 – Les structures conditionnelles (Si … Sinon)", "fiche-02-structures-conditionnelles-si-sinon", 2),
- "03": ("Fiche 03 – La boucle Pour", "fiche-03-boucle-pour", 2),
- "04": ("Fiche 04 – Les tableaux à une dimension", "fiche-04-tableaux", 2),
- "05": ("Fiche 05 – Les boucles Répéter et Tant que", "fiche-05-boucles-repeter-tant-que", 2),
- "06": ("Fiche 06 – Les sous-programmes (fonctions & procédures)", "fiche-06-sous-programmes-fonctions-procedures", 2),
- "09": ("Fiche 09 – Les algorithmes de recherche", "fiche-09-algorithmes-de-recherche", 3),
- "10": ("Fiche 10 – Le tri à bulles", "fiche-10-tri-a-bulles", 2),
- "11": ("Fiche 11 – Le tri par sélection", "fiche-11-tri-par-selection", 2),
- "12": ("Fiche 12 – Le tri par insertion", "fiche-12-tri-par-insertion", 2),
- "13": ("Fiche 13 – Qt Designer & Bac pratique", "fiche-13-qt-designer-bac-pratique", 4),
- "R3": ("Rappel complet – Algorithme & Programmation 3ème Sciences", "rappel-algorithme-programmation-3eme-sciences", 12),
-}
-
-CLASSES = [
- dict(slug="algorithme-python-2eme-sciences", notif="2sc", short="2ème Sciences", num="2", tag="2ème année",
-      title="Algorithme et Python 2ème Sciences – Cours, exercices corrigés et fiches PDF | Sahalha",
-      desc="Algorithmique et programmation Python pour la 2ème année secondaire Sciences en Tunisie : vidéos expliquées en tunisien, fiches de révision PDF gratuites, exercices corrigés et livre Sahalha.",
-      h1="Algorithme & Python <em>2ème Sciences</em>",
-      lead="Tout pour démarrer l'algorithmique et Python en 2ème année secondaire (Sciences) : les bases expliquées simplement, en tunisien.",
-      cover="livre-2eme-sciences", shop=SHOP+"/category/2eme-sciences",
-      book="Le livre Algorithme & Programmation 2ème Sciences",
-      bookpts=["Résumé du cours de chaque chapitre","6 séries d'exercices progressives","75+ exercices corrigés","Scripts Python détaillés"],
-      fiches=["01","02","03"],
-      chaps=["Opérations élémentaires","Variables et types","Entrées / sorties","Structures conditionnelles","Boucle Pour","Premiers programmes Python"],
-      kw="algorithme 2ème sciences, python 2ème année secondaire, informatique 2ème sciences tunisie"),
- dict(slug="algorithme-python-2eme-informatique", notif="2info", short="2ème Informatique", num="2", tag="Section Info",
-      title="Algorithme et Python 2ème Informatique (TIC) – Cours et exercices corrigés | Sahalha",
-      desc="Programmation Python et algorithmique pour la 2ème année secondaire section Informatique (Technologies de l'informatique) en Tunisie : vidéos en tunisien, fiches PDF gratuites, exercices corrigés.",
-      h1="Algorithme & Python <em>2ème Informatique</em>",
-      lead="La section Informatique demande de bonnes bases en algorithmique et en Python : on avance pas à pas, avec des exemples et des exercices corrigés.",
-      cover="livre-2eme-informatique", shop=SHOP+"/category/2-eme-informatique",
-      book="Le livre Algorithme & Programmation 2ème Informatique",
-      bookpts=["Résumé du cours de chaque chapitre","13 séries progressives","140+ exercices corrigés","Scripts Python détaillés"],
-      fiches=["01","02","03","04"],
-      chaps=["Opérations élémentaires","Structures conditionnelles","Boucle Pour","Boucles Répéter / Tant que","Tableaux","Chaînes de caractères"],
-      kw="algorithme 2ème informatique, python 2ème TI, technologies de l'informatique tunisie"),
- dict(slug="algorithme-python-3eme-sciences", notif="3sc", short="3ème Sciences", num="3", tag="3ème année",
-      title="Algorithme et Python 3ème Sciences – Cours, rappel PDF et exercices corrigés | Sahalha",
-      desc="Algorithmique et programmation Python 3ème année secondaire (Math, Sciences expérimentales, Technique) en Tunisie : rappel de cours PDF gratuit, fiches, exercices corrigés et livre Sahalha.",
-      h1="Algorithme & Python <em>3ème Sciences</em>",
-      lead="Math, Sciences exp ou Technique : prépare le terrain pour le Bac avec un rappel complet, des fiches PDF et des exercices corrigés.",
-      cover="livre-3eme-sciences", shop=SHOP+"/category/3eme-secondaire",
-      book="Le livre Algorithme & Programmation 3ème Sciences",
-      bookpts=["Résumé du cours de chaque chapitre","13 séries progressives","115+ exercices corrigés","Scripts Python détaillés"],
-      fiches=["R3","01","02","03","04","05","06"],
-      chaps=["Structures de données","Structures conditionnelles","Boucles Pour / Répéter / Tant que","Tableaux","Chaînes de caractères","Sous-programmes"],
-      kw="algorithme 3ème sciences, python 3ème année secondaire, informatique 3ème math tunisie"),
- dict(slug="bac-algorithme-python-tunisie", notif="bac", short="Bac", num="4", tag="Bac 2027",
-      title="Bac Tunisie Algorithme et Programmation Python – Cours, sujets corrigés, Bac pratique | Sahalha",
-      desc="Réussir l'épreuve d'Algorithmique et Programmation au Bac Tunisie (Math, Sciences expérimentales, Technique) : fiches de révision PDF gratuites, tris, recherche, Qt Designer pour le Bac pratique, sujets Bac corrigés.",
-      h1="Bac Tunisie : <em>Algorithme & Python</em>",
-      lead="Bac Math, Sciences exp ou Technique : révise tout le programme, du cours aux sujets Bac corrigés, avec la préparation du Bac pratique (Python + Qt Designer).",
-      cover="livre-bac", shop=SHOP+"/category/bac",
-      book="Le livre Algorithme & Programmation Bac (4ème)",
-      bookpts=["Résumé du cours de chaque chapitre","18 séries progressives","105+ exercices corrigés","30+ sujets Bac corrigés","Bac pratique & théorique"],
-      fiches=["01","02","03","04","05","06","09","10","11","12","13"],
-      chaps=["Structures de données","Structures conditionnelles","Boucles","Tableaux","Chaînes","Sous-programmes","Algorithmes de recherche","Tri à bulles","Tri par sélection","Tri par insertion","Qt Designer & Bac pratique"],
-      kw="bac tunisie informatique, bac algorithme python, bac pratique python qt designer, sujets bac corrigés tunisie"),
-]
+FICHES = DATA["fiches"]
+# Miniature auto : si une fiche n'a pas d'image, on la crée depuis la 1re page du PDF
+for _f in FICHES:
+    if not _f.get("thumb") and _f.get("pdf", "").lower().endswith(".pdf"):
+        try:
+            import pymupdf
+            _src = os.path.join(OUT, _f["pdf"].lstrip("/"))
+            _name = os.path.splitext(os.path.basename(_src))[0] + ".png"
+            _dst = os.path.join(OUT, "img", "fiches", _name)
+            os.makedirs(os.path.dirname(_dst), exist_ok=True)
+            pymupdf.open(_src)[0].get_pixmap(dpi=40).save(_dst)
+            _f["thumb"] = "/img/fiches/" + _name
+            if not _f.get("pages"): _f["pages"] = len(pymupdf.open(_src))
+        except Exception as e:
+            print("miniature impossible :", _f.get("pdf"), e)
+CLASSES = DATA["classes"]
 
 HAT = '<svg viewBox="0 0 64 44" width="26" height="18" aria-hidden="true" fill="#fff"><path d="M2 15 33 3l29 10-31 12z"/><path d="M14 20v10c0 7 34 7 34 0V20l-17 7z"/><path d="M8 17.5 6.5 33" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><rect x="3.5" y="32" width="6" height="7" rx="2"/></svg>'
 WA_SVG = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.6c.2.2 2.4 3.6 5.8 5 2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg>'
@@ -159,13 +120,14 @@ def footer():
 <script src="/assets/app.js" defer></script>
 </body></html>"""
 
-def fiche_cards(keys):
+def fiche_cards(items):
     out = []
-    for i, k in enumerate(keys):
-        t, slug, pages = FICHES[k]
-        out.append(f'<a class="fiche reveal d{i%4}" href="/pdf/{slug}.pdf" target="_blank" rel="noopener" download>'
-                   f'<div class="th"><img src="/img/fiches/{slug}.webp" alt="{esc(t)} – PDF gratuit Sahalha" loading="lazy" width="331" height="468"></div>'
-                   f'<div class="meta"><b>{esc(t)}</b><span>⬇ PDF gratuit · {pages} pages</span></div></a>')
+    for i, f in enumerate(items):
+        t, pdf, thumb, pages = f["title"], f["pdf"], f.get("thumb") or "", f.get("pages") or ""
+        img = f'<img src="{esc(thumb)}" alt="{esc(t)} – PDF gratuit Sahalha" loading="lazy" width="331" height="468">' if thumb else ""
+        pg = f" · {pages} pages" if pages else ""
+        out.append(f'<a class="fiche reveal d{i%4}" href="{esc(pdf)}" target="_blank" rel="noopener" download>'
+                   f'<div class="th">{img}</div><div class="meta"><b>{esc(t)}</b><span>⬇ PDF gratuit{pg}</span></div></a>')
     return "".join(out)
 
 def video_block():
@@ -179,16 +141,11 @@ def faq_block(items):
 def faq_ld(items):
     return {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in items]}
 
-HOME_FAQ = [
- ("Le contenu Sahalha est-il gratuit ?", "Oui : les vidéos, les lives et les fiches de révision PDF sont gratuits. Seuls les livres (PDF ou imprimés) sont payants, sur la boutique Sahalha."),
- ("Pour quelles classes ?", "2ème Sciences, 2ème Informatique, 3ème Sciences et Bac (Math, Sciences expérimentales, Technique), selon le programme officiel tunisien d'Algorithmique et Programmation."),
- ("Algorithme ou Python ?", "Les deux : chaque notion est expliquée en algorithme puis traduite en Python, côte à côte, comme demandé au Bac."),
- ("Comment suivre les lives ?", "Les lives se font sur YouTube : abonne-toi à la chaîne et active la cloche 🔔. Pour toute question, écris-moi directement sur WhatsApp (23 235 642)."),
-]
+HOME_FAQ = [(x["q"], x["a"]) for x in DATA["home_faq"]]
 
 def home():
     cards = "".join(f'''<a class="cls reveal d{i}" href="/{c["slug"]}/"><span class="tag">{c["tag"]}</span><span class="num">{c["num"]}</span><h3>{c["short"]}</h3><p>{esc(c["lead"][:96].rsplit(" ",1)[0])}…</p><span class="go">Commencer <span>→</span></span></a>''' for i, c in enumerate(CLASSES))
-    allfiches = ["01","02","03","04","09","13"]
+    allfiches = [f for f in FICHES if f.get("home")]
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "EducationalOrganization", "name": "Sahalha – تسهال مع أكرم", "url": BASE + "/", "logo": BASE + "/img/og-sahalha.jpg",
          "description": "Cours d'algorithmique et de programmation Python pour les élèves tunisiens, de la 2ème année secondaire au Bac.",
@@ -283,7 +240,7 @@ def class_page(c):
 <div class="reveal in"><div class="crumbs"><a href="/">Accueil</a> › {c['short']}</div>
 <h1>{c['h1']}</h1><p class="lead">{esc(c['lead'])}</p><span class="ar">مرحبا بيك، هنا تلقى كل شي باش تفهم وتنجح 💯</span>
 <div class="btns"><a class="btn btn-main" href="#fiches">📄 Fiches PDF gratuites</a><a class="btn btn-ghost" href="#livre">📚 Le livre</a></div></div>
-<div class="reveal in d2"><img class="cover" src="/img/{c['cover']}.webp" alt="{esc(c['book'])} – Sahalha, Tunisie" width="900" height="1200"></div>
+<div class="reveal in d2"><img class="cover" src="{c['cover']}" alt="{esc(c['book'])} – Sahalha, Tunisie" width="900" height="1200"></div>
 </div></section>
 
 <section><div class="wrap split">
@@ -293,7 +250,7 @@ def class_page(c):
 
 <section id="fiches" style="background:var(--cream2)"><div class="wrap">
 <div class="reveal"><span class="eyebrow">Gratuit</span><h2>Fiches PDF – {c['short']}</h2><p class="sub">Clique pour ouvrir ou télécharger. Chaque fiche résume le cours avec les points « À retenir ».</p></div>
-<div class="fiches">{fiche_cards(c['fiches'])}</div>
+<div class="fiches">{fiche_cards([f for f in FICHES if c['notif'] in (f.get('classes') or [])])}</div>
 </div></section>
 
 <section><div class="wrap"><div class="live reveal">
@@ -303,7 +260,7 @@ def class_page(c):
 </div></div></section>
 
 <section id="livre"><div class="wrap"><div class="book reveal">
-<img src="/img/{c['cover']}.webp" alt="Couverture – {esc(c['book'])}" width="900" height="1200" loading="lazy">
+<img src="{c['cover']}" alt="Couverture – {esc(c['book'])}" width="900" height="1200" loading="lazy">
 <div><span class="eyebrow">Le livre</span><h2>{esc(c['book'])}</h2><ul class="checks">{pts}</ul>
 <div class="btns"><a class="btn btn-main" href="{c['shop']}" target="_blank" rel="noopener">🛒 Commander le livre</a><a class="btn btn-light" href="{WA_DIRECT}" target="_blank" rel="noopener">Une question ?</a></div></div>
 </div></div></section>
@@ -323,7 +280,7 @@ for c in CLASSES: write(c["slug"] + "/index.html", class_page(c))
 urls = [BASE + "/"] + [f"{BASE}/{c['slug']}/" for c in CLASSES]
 write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
       "".join(f"  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod><priority>{'1.0' if u.endswith(BASE+'/') else '0.8'}</priority></url>\n" for u in urls) + "</urlset>\n")
-write("robots.txt", f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n")
+write("robots.txt", f"User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: {BASE}/sitemap.xml\n")
 write("404.html", head("Page introuvable | Sahalha", "Page introuvable", "404.html", "sahalha", {"@context":"https://schema.org","@type":"WebPage","name":"404"}) + nav("") + '<main id="main"><section class="hero phero"><div class="wrap" style="display:block"><h1>Oups, page introuvable</h1><p class="lead">Retourne à l\'accueil pour choisir ta classe.</p><div class="btns"><a class="btn btn-main" href="/">← Accueil</a></div></div></section></main>' + footer())
 write(".nojekyll", "")
 print("OK", BASE)
